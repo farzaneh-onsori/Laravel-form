@@ -13,30 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'hello world';
+Route::get('/articles/{article}', function ($article) {
+    $title = $article;
+    return view('index' , [
+        'title' => $title //pass key value to the index by using view
+    ]);
 });
 
-Route::get('/articles/{article}/{id}', function ($article, $id) {
-    return $article. '-' .$id;
-});
 
-Route::prefix('admin')->group(function(){
-
-    Route::get('/', function () {
-        return 'Admin panel ';
-    });
-
-    Route::get('/articles', function () {
-        return 'Admin articles';
-    });
-
-    Route::get('/users', function () {
-        return 'hello ';
-    });
-
-    Route::get('/categories', function () {
-        return 'hello ';
-    });
-});
 
